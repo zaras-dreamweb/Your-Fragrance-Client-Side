@@ -2,7 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home/Home';
 import Inventory from './Pages/Inventory/Inventory';
+import Login from './Pages/Login/Login';
 import NotFound from './Pages/NotFound/NotFound';
+import Register from './Pages/Register/Register';
 import RequiredAuth from './Pages/RequiredAuth/RequiredAuth';
 import Footer from './Shared/Footer/Footer';
 import Header from './Shared/Header/Header';
@@ -20,6 +22,8 @@ function App() {
           </RequiredAuth>
         }></Route> */}
         <Route path='/inventory/:id' element={<Inventory></Inventory>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       {/* <Footer></Footer> */}
