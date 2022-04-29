@@ -32,14 +32,14 @@ const Header = () => {
             </header>
             <nav className="navbar navbar-expand-sm fixed-top navbar-dark">
                 <div className="container">
-                    <Link className="navbar-brand" to="#">Perfume 11</Link>
+                    <Link className="navbar-brand" to="#">Perfume Panel</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbar1">
                         <ul className="navbar-nav">
                             <li className="nav-item active">
-                                <Link className="nav-link" to="#">Link</Link>
+                                <Link className="nav-link" to="/home">Home</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="#">Link</Link>
