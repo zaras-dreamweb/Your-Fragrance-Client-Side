@@ -1,35 +1,22 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+
+    const handleSignOut = () => {
+        signOut(auth).then(() => {
+
+        }).catch((error) => {
+
+        });
+    }
     return (
         <div>
-            {/* <nav className="navbar navbar-expand-lg navbar-dark bg-lime-200">
-                <div className="container-fluid">
-                    <h1 className="text-decoration-none text-4xl font-bold text-white">Perfume 11</h1>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav ms-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="#">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="#">Features</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="#">Pricing</Link>
-                            </li>
 
-                        </ul>
-                    </div>
-                </div>
-            </nav> */}
-
-            <header>
-
-            </header>
             <nav className="navbar navbar-expand-sm fixed-top navbar-dark">
                 <div className="container">
                     <Link className="navbar-brand" to="#">Your Fragrance</Link>
@@ -42,11 +29,18 @@ const Header = () => {
                                 <Link className="nav-link" to="/home">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/login">Login</Link>
-                            </li>
-                            <li className="nav-item">
                                 <Link className="nav-link" to="/register">Register</Link>
                             </li>
+                            <li className="nav-item">
+                                {
+                                    user
+                                        ?
+                                        <button onClick={handleSignOut} className='text-bold pb-2 text-white pt-2'>SignOut</button>
+                                        :
+                                        <Link className="nav-link" to="/login">Login</Link>
+                                }
+                            </li>
+
                         </ul>
                     </div>
                 </div>
