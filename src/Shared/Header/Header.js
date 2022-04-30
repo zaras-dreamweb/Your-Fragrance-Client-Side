@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSprayCanSparkles } from '@fortawesome/free-solid-svg-icons';
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -17,9 +19,9 @@ const Header = () => {
     return (
         <div>
 
-            <nav className="navbar navbar-expand-sm fixed-top navbar-dark">
+            <nav className="navbar navbar-expand-sm fixed top-0 bg-gradient-to-t from-black to-red-300 navbar-light ">
                 <div className="container">
-                    <Link className="navbar-brand" to="#">Your Fragrance</Link>
+                    <Link className="navbar-brand font-bold italic" to="/"><FontAwesomeIcon className="text-2xl" icon={faSprayCanSparkles}></FontAwesomeIcon> Your Fragrance</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
                         <span className="navbar-toggler-icon"></span>
                     </button>
