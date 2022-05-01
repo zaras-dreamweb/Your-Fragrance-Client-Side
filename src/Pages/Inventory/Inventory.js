@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import usePerfumeDetail from '../../hooks/usePerfumeDetail';
 
+
 const Inventory = () => {
     const { id } = useParams();
     const [perfumeDetail] = usePerfumeDetail(id);
