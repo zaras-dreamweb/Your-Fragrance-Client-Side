@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Pages/Home/Home';
 import Inventory from './Pages/Inventory/Inventory';
 import Login from './Pages/Login/Login';
+import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import NotFound from './Pages/NotFound/NotFound';
 import Register from './Pages/Register/Register';
 import RequiredAuth from './Pages/RequiredAuth/RequiredAuth';
@@ -18,9 +19,10 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/inventory/:id' element={
           <RequiredAuth>
-
+            <Inventory></Inventory>
           </RequiredAuth>
         }></Route>
+        <Route path='/manageInventory' element={<ManageInventory></ManageInventory>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

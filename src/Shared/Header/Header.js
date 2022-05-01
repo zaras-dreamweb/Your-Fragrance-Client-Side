@@ -19,7 +19,7 @@ const Header = () => {
     return (
         <div>
 
-            <nav className="navbar navbar-expand-sm fixed top-0 bg-gradient-to-t from-black to-red-300 navbar-light ">
+            <nav className="navbar navbar-expand-sm fixed top-0 bg-gradient-to-t from-black to-red-300 navbar-dark ">
                 <div className="container">
                     <Link className="navbar-brand font-bold italic" to="/"><FontAwesomeIcon className="text-2xl" icon={faSprayCanSparkles}></FontAwesomeIcon> Your Fragrance</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">

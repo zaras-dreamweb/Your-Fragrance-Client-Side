@@ -90,7 +90,6 @@ const Register = () => {
     return (
         <div>
             <div>
-                <div className='bg-gradient-to-r from-pink-500 to-black pb-10 mt-2'></div>
 
                 <div className="container-fluid mt-20">
                     <div className="row main-content bg-success text-center mx-auto">

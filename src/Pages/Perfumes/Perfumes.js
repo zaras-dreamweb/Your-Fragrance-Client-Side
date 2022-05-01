@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import usePerfumes from '../../hooks/UsePerfumes';
 import Perfume from '../Perfume/Perfume';
 
@@ -12,7 +13,8 @@ const Perfumes = () => {
                     perfumes.slice(0, 6).map(perfume => <Perfume key={perfume._id} perfume={perfume}></Perfume>)
                 }
             </div>
-        </div>
+            <button className=' bg-transparent pb-5 '><Link className='text-rose-600 text-3xl text-decoration-none' to='/manageInventory'>Manage Inventories</Link></button>
+        </div >
     );
 };
 
