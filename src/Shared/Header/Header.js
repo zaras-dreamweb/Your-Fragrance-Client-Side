@@ -26,12 +26,34 @@ const Header = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbar1">
-                        <ul className="navbar-nav">
+                        <ul className="navbar-nav ms-auto">
                             <li className="nav-item active">
                                 <Link className="nav-link" to="/home">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/register">Register</Link>
+                                {
+                                    user && <>
+                                        <Link className="nav-link" to="/manageInventory">Manage Inventory</Link>
+                                    </>
+                                }
+                            </li>
+                            <li className="nav-item">
+                                {
+                                    user && <>
+                                        <Link className="nav-link" to="/addInventory">Add Inventory</Link>
+                                    </>
+                                }
+                            </li>
+                            <li className="nav-item">
+                                {
+                                    user && <>
+                                        <Link className="nav-link" to="/myItems">My Items</Link>
+                                    </>
+                                }
+                            </li>
+
+                            <li className="nav-item ">
+                                <Link className="nav-link " to="/register">Register</Link>
                             </li>
                             <li className="nav-item">
                                 {
@@ -42,7 +64,6 @@ const Header = () => {
                                         <Link className="nav-link" to="/login">Login</Link>
                                 }
                             </li>
-
                         </ul>
                     </div>
                 </div>

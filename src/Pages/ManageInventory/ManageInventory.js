@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import usePerfumes from '../../hooks/UsePerfumes';
 import './ManageInventory.css'
 
@@ -52,6 +53,10 @@ const ManageInventory = () => {
                         </table>
                     </p>)
                 }
+            </div>
+
+            <div className='flex justify-center mx-auto'>
+                <button className=' bg-black p-2 rounded mb-10 '><Link className='text-rose-600 text-3xl text-decoration-none' to='/addInventory'>Add New Items</Link></button>
             </div>
         </div >
     );
