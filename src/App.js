@@ -10,6 +10,7 @@ import MyItems from './Pages/MyItems/MyItems';
 import NotFound from './Pages/NotFound/NotFound';
 import Register from './Pages/Register/Register';
 import RequiredAuth from './Pages/RequiredAuth/RequiredAuth';
+import SocialContacts from './Pages/SocialContacts/SocialContacts';
 import Footer from './Shared/Footer/Footer';
 import Header from './Shared/Header/Header';
 
@@ -41,6 +42,7 @@ function App() {
           </RequiredAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/socialContacts' element={<SocialContacts></SocialContacts>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
