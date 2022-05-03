@@ -15,7 +15,7 @@ const Inventory = () => {
             .then(data => setPerfumeQuantity(data));
     }, []);
 
-
+    // delete item
     const handleDeliveredQuantity = id => {
         window.location.reload(false);
         const oldQuantity = parseInt(perfumeQuantity.quantity);
@@ -39,6 +39,7 @@ const Inventory = () => {
 
     }
 
+    // add item
     const handleAddQuantity = event => {
         event.preventDefault();
         window.location.reload(false);

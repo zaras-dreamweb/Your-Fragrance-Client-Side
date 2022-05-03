@@ -21,11 +21,11 @@ const Register = () => {
     const [
         createUserWithEmailAndPassword,
         user,
-        loading,
+
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
 
     let errorItem;
 
@@ -45,6 +45,7 @@ const Register = () => {
             setUserInfo({ ...userInfo, email: "" });
         }
     };
+
     const handlePasswordChange = event => {
         const passwordRegex = /.{6,}/;
         const validPassword = passwordRegex.test(event.target.value);

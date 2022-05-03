@@ -1,4 +1,4 @@
-import { faArrowAltCircleRight, faPlaneCircleCheck, faTruckLoading, faSailboat, faCarRear } from '@fortawesome/free-solid-svg-icons';
+import { faPlaneCircleCheck, faTruckLoading, faSailboat, faCarRear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import img from '../../images/pink-W.png'
 import React from 'react';

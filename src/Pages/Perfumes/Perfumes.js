@@ -4,7 +4,7 @@ import usePerfumes from '../../hooks/UsePerfumes';
 import Perfume from '../Perfume/Perfume';
 
 const Perfumes = () => {
-    const [perfumes, setPerfumes] = usePerfumes();
+    const [perfumes] = usePerfumes();
     return (
         <div className='bg-gradient-to-b from-red-200 to-black text-center'>
             <h2 className=' text-4xl pt-4 mt-10 font-bold text-rose-500'>Our Perfumes</h2>

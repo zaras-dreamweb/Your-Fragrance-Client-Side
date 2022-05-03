@@ -22,17 +22,16 @@ const Register = () => {
     const [
         signInWithEmailAndPassword,
         user,
-        loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
 
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
     let errorItem;
 
-    if (errors || error) {
+    if (errors || error || googleError) {
         errorItem = <p className='text-red-500'>{error?.message}</p>
     };
 
@@ -48,6 +47,7 @@ const Register = () => {
             setUserInfo({ ...userInfo, email: "" });
         }
     };
+
     const handlePasswordChange = event => {
         const passwordRegex = /.{6,}/;
         const validPassword = passwordRegex.test(event.target.value);
@@ -60,6 +60,7 @@ const Register = () => {
             setUserInfo({ ...userInfo, password: '' })
         }
     };
+
 
     let navigate = useNavigate();
     let location = useLocation();
@@ -83,7 +84,7 @@ const Register = () => {
             toast.success("Email Sent")
         }
         else {
-            toast.danger("Please enter email")
+            toast.danger("Please enter valid email")
         }
     }
 
