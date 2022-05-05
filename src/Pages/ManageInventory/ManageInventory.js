@@ -32,7 +32,7 @@ const ManageInventory = () => {
                         <table className="container col-md-12 table-bordered table-striped table-condensed cf">
                             <thead className="cf">
                                 <tr>
-                                    <th><button onClick={() => handleDelete(perfume._id)} className='p-1 px-2 bg-rose-500 text-white'>X</button></th>
+                                    <th><button onClick={() => handleDelete(perfume._id)} className='p-1 px-2 bg-rose-600 text-white'>Delete</button></th>
                                     <th>YOUR FRAGRANCE PERFUME BRANDS</th>
                                     <th className="numeric"> Quantity</th>
                                     <th className="numeric">Price</th>

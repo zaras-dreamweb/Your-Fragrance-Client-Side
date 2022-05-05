@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo from '../../images/logo3.png'
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
+import useToken from '../../hooks/useToken';
+
 
 const Register = () => {
     const [userInfo, setUserInfo] = useState({
@@ -25,15 +28,25 @@ const Register = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
 
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    const [token] = useToken(user);
+
+
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     let errorItem;
 
-    if (errors || error || googleError) {
-        errorItem = <p className='text-red-500'>{error?.message}</p>
-    };
+
+    if (error) {
+        toast('Please Register First');
+    }
 
 
     const handleEmailChange = event => {
@@ -62,29 +75,18 @@ const Register = () => {
     };
 
 
-    let navigate = useNavigate();
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
-
-    useEffect(() => {
-        if (user || googleUser) {
-            navigate(from, { replace: true });
-        }
-
-    }, [user, googleUser]);
-
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
-        signInWithEmailAndPassword(userInfo.email, userInfo.password)
+        const email = userInfo.email;
+        const password = userInfo.password;
+
+        await signInWithEmailAndPassword(email, password);
     };
 
     const handlePasswordReset = async () => {
         if (userInfo.email) {
             await sendPasswordResetEmail(userInfo.email);
-            toast.success("Email Sent")
-        }
-        else {
-            toast.danger("Please enter valid email")
+            toast.success("Email Sent");
         }
     }
 
@@ -121,15 +123,14 @@ const Register = () => {
                                         <div className='row'>
                                             <p>Forget Password?<button onClick={handlePasswordReset} className='btn btn-link text-decoration-none text-pink-600'>Password Reset</button></p>
                                         </div>
-
-                                        {errorItem}
                                         <div className="row">
                                             <button className='btn-btn' type='submit'>Login</button>
                                         </div>
                                         <div className='row'>
-                                            <button onClick={() => signInWithGoogle()} className='btn-btn'>Login with Google</button>
+                                            <GoogleLogin></GoogleLogin>
                                         </div>
                                     </form>
+
                                 </div>
                                 <div className="row">
                                     <p>Already have an account? <Link className='text-pink-500' to="/register">PleaseRegister</Link></p>

@@ -1,17 +1,34 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
 
 const MyItems = () => {
     const [user] = useAuthState(auth);
     const [items, setItems] = useState([]);
+
+    let navigate = useNavigate();
     useEffect(() => {
-        const email = user.email;
-        const url = `http://localhost:5000/perfume?email=${email}`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setItems(data));
+        const getOrders = async () => {
+            const email = user?.email;
+            const url = `http://localhost:5000/perfume?email=${email}`;
+            try {
+                const { data } = await axiosPrivate.get(url);
+                setItems(data);
+            }
+            catch (error) {
+                console.log(error.message);
+                if (error.response.status === 401 || error.response.status === 401) {
+                    signOut(auth);
+                    navigate('/login');
+                }
+            }
+
+        }
+        getOrders();
     }, [user]);
 
 
@@ -49,7 +66,7 @@ const MyItems = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><button onClick={() => handleDelete(item._id)} className='p-1 px-2 bg-rose-500 text-white'>X</button></td>
+                                    <td><button onClick={() => handleDelete(item._id)} className='p-1 px-2 bg-rose-600 text-white'>Delete</button></td>
                                     <td>{item.name}</td>
                                     <td>{item.price}</td>
                                     <td>{item.quantity}</td>

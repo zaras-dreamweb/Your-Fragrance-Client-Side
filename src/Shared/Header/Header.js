@@ -5,6 +5,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const Header = () => {
     const [user] = useAuthState(auth);
@@ -18,61 +19,65 @@ const Header = () => {
     }
     return (
         <div>
+            <Navbar className="navbar navbar-expand-sm fixed top-0 bg-gradient-to-t from-black to-red-300 navbar-dark " expand="lg">
+                <Container fluid>
 
-            <nav className="navbar navbar-expand-sm fixed top-0 bg-gradient-to-t from-black to-red-300 navbar-dark ">
-                <div className="container">
                     <Link className="navbar-brand font-bold italic" to="/"><FontAwesomeIcon className="text-2xl" icon={faSprayCanSparkles}></FontAwesomeIcon> Your Fragrance</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbar1">
-                        <ul className="navbar-nav ms-auto">
-                            <li className="nav-item active">
-                                <Link className="nav-link" to="/home">Home</Link>
-                            </li>
-                            <li className="nav-item active">
-                                <Link className="nav-link" to="/blogs">Blogs</Link>
-                            </li>
-                            <li className="nav-item">
-                                {
-                                    user && <>
-                                        <Link className="nav-link" to="/manageInventory">Manage Inventory</Link>
-                                    </>
-                                }
-                            </li>
-                            <li className="nav-item">
-                                {
-                                    user && <>
-                                        <Link className="nav-link" to="/addInventory">Add Inventory</Link>
-                                    </>
-                                }
-                            </li>
-                            <li className="nav-item">
-                                {
-                                    user && <>
-                                        <Link className="nav-link" to="/myItems">My Items</Link>
-                                    </>
-                                }
-                            </li>
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll">
+                        <Nav
+                            className="me-auto my-2 my-lg-0"
+                            style={{ maxHeight: '100px' }}
+                            navbarScroll
+                        >
+                            <div>
+                                <ul className="navbar-nav ms-auto">
+                                    <li className="nav-item active">
+                                        <Link className="nav-link" to="/home">Home</Link>
+                                    </li>
+                                    <li className="nav-item active">
+                                        <Link className="nav-link" to="/blogs">Blogs</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        {
+                                            user && <>
+                                                <Link className="nav-link" to="/manageInventory">Manage Inventory</Link>
+                                            </>
+                                        }
+                                    </li>
+                                    <li className="nav-item">
+                                        {
+                                            user && <>
+                                                <Link className="nav-link" to="/addInventory">Add Inventory</Link>
+                                            </>
+                                        }
+                                    </li>
+                                    <li className="nav-item">
+                                        {
+                                            user && <>
+                                                <Link className="nav-link" to="/myItems">My Items</Link>
+                                            </>
+                                        }
+                                    </li>
 
-                            <li className="nav-item ">
-                                <Link className="nav-link " to="/register">Register</Link>
-                            </li>
-                            <li className="nav-item">
-                                {
-                                    user
-                                        ?
-                                        <button onClick={handleSignOut} className='text-bold pb-2 text-white pt-2'>SignOut</button>
-                                        :
-                                        <Link className="nav-link" to="/login">Login</Link>
-                                }
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div className="sticky-top bg-white hidden-spacer"> </div>
-
+                                    <li className="nav-item ">
+                                        <Link className="nav-link " to="/register">Register</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        {
+                                            user
+                                                ?
+                                                <button onClick={handleSignOut} className='text-bold pb-2 text-white pt-2'>SignOut</button>
+                                                :
+                                                <Link className="nav-link" to="/login">Login</Link>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         </div>
     );
 };

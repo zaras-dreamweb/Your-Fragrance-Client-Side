@@ -7,23 +7,22 @@ import { toast, ToastContainer } from 'react-toastify';
 const AddInventory = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
-        console.log(data);
+    const onSubmit = (data, e) => {
         const url = `http://localhost:5000/perfume`;
         fetch(url, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
             },
             body: JSON.stringify(data)
         })
             .then(res => res.json())
             .then(result => {
-                const { data } = result;
-                if (data.insertedId) {
-                    toast("Added Item!");
+                if (result.insertedId) {
+                    toast.success("Item Added Sucessfully");
                 }
             })
+        e.target.reset();
     };
     return (
         <div className='w-50 mx-auto mb-40'>

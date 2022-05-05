@@ -41,6 +41,7 @@ function App() {
             <MyItems></MyItems>
           </RequiredAuth>
         }></Route>
+
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/socialContacts' element={<SocialContacts></SocialContacts>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>

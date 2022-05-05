@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo from '../../images/logo3.png'
 import './Register.css'
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, } from 'react-firebase-hooks/auth';
+
+import useToken from '../../hooks/useToken';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const Register = () => {
     const [userInfo, setUserInfo] = useState({
@@ -21,16 +24,15 @@ const Register = () => {
     const [
         createUserWithEmailAndPassword,
         user,
-
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
+
+    const [token] = useToken(user);
 
     let errorItem;
-
-    if (errors || error || googleError) {
-        errorItem = <p className='text-red-500'>{error?.message}</p>
+    if (errors || error) {
+        errorItem = <p className='text-red-500'>{error?.message} {errors?.message}</p>
     };
 
 
@@ -72,20 +74,21 @@ const Register = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        createUserWithEmailAndPassword(userInfo.email, userInfo.password)
+        const email = userInfo.email;
+        const password = userInfo.password;
+        createUserWithEmailAndPassword(email, password)
     };
+
+
+
     let navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
-        if (user || googleUser) {
-            navigate(from, { replace: true });
-        }
 
-    }, [user, googleUser]);
-
-
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     return (
         <div>
@@ -128,7 +131,7 @@ const Register = () => {
                                             <button className='btn-btn' type='submit'>Register</button>
                                         </div>
                                         <div className='row'>
-                                            <button onClick={() => signInWithGoogle()} className='btn-btn'>Register with Google</button>
+                                            <GoogleLogin></GoogleLogin>
                                         </div>
                                     </form>
                                 </div>
