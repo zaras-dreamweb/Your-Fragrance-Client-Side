@@ -2,7 +2,7 @@
 
 For My Live Site Link [Click Here]().
 
-## Available Scripts
+## Short Summery of my project
 
 #My project is on a Perfume WholeSale Company site.
 
