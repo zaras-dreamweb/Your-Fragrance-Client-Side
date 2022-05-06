@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo from '../../images/logo3.png'
@@ -41,7 +41,6 @@ const Register = () => {
         navigate(from, { replace: true });
     }
 
-    let errorItem;
 
 
     if (error) {

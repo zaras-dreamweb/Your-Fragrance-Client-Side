@@ -6,23 +6,29 @@ import auth from '../../firebase.init';
 
 import React, { useEffect } from 'react';
 import useToken from '../../hooks/useToken';
+import Loading from '../Loading/Loading';
 
 const GoogleLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [token] = useToken(user);
-
-
     const navigate = useNavigate();
 
-    if (token) {
-        navigate('/');
-    }
 
     useEffect(() => {
         if (error) {
             toast(error?.message)
         }
     }, [error]);
+
+    if (token) {
+        navigate('/');
+    }
+
+    if (loading) {
+        return <Loading></Loading>
+    }
+
+
 
     return (
         <div>

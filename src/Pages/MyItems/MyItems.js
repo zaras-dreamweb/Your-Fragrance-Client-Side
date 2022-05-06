@@ -14,7 +14,7 @@ const MyItems = () => {
     useEffect(() => {
         const getOrders = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/perfume?email=${email}`;
+            const url = `https://arcane-wave-63759.herokuapp.com/perfume?email=${email}`;
             try {
                 const { data } = await axiosPrivate.get(url);
                 setItems(data);
@@ -35,7 +35,7 @@ const MyItems = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/perfume/${id}`;
+            const url = `https://arcane-wave-63759.herokuapp.com/perfume/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })

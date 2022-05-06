@@ -8,7 +8,7 @@ const AddInventory = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
     const onSubmit = (data, e) => {
-        const url = `http://localhost:5000/perfume`;
+        const url = `https://arcane-wave-63759.herokuapp.com/perfume`;
         fetch(url, {
             method: 'POST',
             headers: {

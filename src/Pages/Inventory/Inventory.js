@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import usePerfumeDetail from '../../hooks/usePerfumeDetail';
 
@@ -10,7 +10,7 @@ const Inventory = () => {
     const [perfumeQuantity, setPerfumeQuantity] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/perfume/${id}`;
+        const url = `https://arcane-wave-63759.herokuapp.com/perfume/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setPerfumeQuantity(data));
@@ -25,7 +25,7 @@ const Inventory = () => {
         const perfume = { quantity };
 
 
-        const url = `http://localhost:5000/perfume/${id}`;
+        const url = `https://arcane-wave-63759.herokuapp.com/perfume/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -49,7 +49,7 @@ const Inventory = () => {
 
         const perfume = { quantity };
 
-        const url = `http://localhost:5000/perfume/${id}`;
+        const url = `https://arcane-wave-63759.herokuapp.com/perfume/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -59,15 +59,11 @@ const Inventory = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data);
-                alert('perfume added successfully!!')
+                alert('Perfume Added Successfully!!')
                 event.target.reset()
             })
 
     }
-
-
-
 
     return (
         <div>
@@ -96,6 +92,7 @@ const Inventory = () => {
                         <button type="submit" className='mt-3 bg-rose-200 text-rose-600 p-2 rounded-md'>Add Items</button>
                     </div>
                 </Form>
+
             </div>
             <div className='flex justify-center mx-auto'>
                 <button className=' bg-black p-2 rounded mb-10 '><Link className='text-rose-600 text-3xl text-decoration-none' to='/manageInventory'>Manage Inventories</Link></button>

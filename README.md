@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Your Fragrance
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For My Live Site Link [Click Here]().
 
 ## Available Scripts
 
@@ -13,3 +13,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 #I have also used Express, Dotenv and ReactRouter in my project.
 
 #JWT is also used in this project.
+
+#Pagination is also included.

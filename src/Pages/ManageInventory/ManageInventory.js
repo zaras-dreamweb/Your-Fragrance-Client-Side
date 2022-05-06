@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import usePerfumes from '../../hooks/UsePerfumes';
 import './ManageInventory.css'
 
 const ManageInventory = () => {
@@ -11,7 +10,7 @@ const ManageInventory = () => {
 
     const [perfumes, setPerfumes] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/perfumes?exactPage=${exactPage}&size=${size}`)
+        fetch(`https://arcane-wave-63759.herokuapp.com/perfumes?exactPage=${exactPage}&size=${size}`)
             .then(res => res.json())
             .then(data => setPerfumes(data));
     }, [exactPage, size]);
@@ -19,7 +18,7 @@ const ManageInventory = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/perfumesCountItem')
+        fetch('https://arcane-wave-63759.herokuapp.com/perfumesCountItem')
             .then(res => res.json())
             .then(data => {
                 const count = data.count;
@@ -32,7 +31,7 @@ const ManageInventory = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/perfume/${id}`;
+            const url = `https://arcane-wave-63759.herokuapp.com/perfume/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })
@@ -85,7 +84,7 @@ const ManageInventory = () => {
                     }
 
                     <select onChange={event => setSize(event.target.value)}>
-                        <option value="5" selected>5</option>
+                        <option value="5" defaultValue={5}>5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
                     </select>
