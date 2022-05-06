@@ -13,7 +13,7 @@ const Offer = () => {
                     </div>
                     <div className='w-50 mx-auto'>
                         <div className='relative border-0 border-white'>
-                            <img src={photo} alt="" /> <Badge className='absolute top-7' bg="pink-600">New Launched</Badge>
+                            <img src={photo} alt="" />
                         </div>
                     </div>
                 </div>
