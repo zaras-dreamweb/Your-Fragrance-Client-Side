@@ -4,7 +4,7 @@ For My Live Site Link [Click Here]().
 
 ## Short Summery of my project
 
-#My project is on a Perfume WholeSale Company site.
+#My project is on a Perfume WholeSale Company.
 
 #This is a project based on react and I have used MongoDB as my database.
 
