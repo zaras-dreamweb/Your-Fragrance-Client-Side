@@ -57,26 +57,28 @@ const MyItems = () => {
                     items.map(item => <p key={item._id}>
                         <Table className='container' striped bordered hover variant="">
                             <thead>
-                                <tr>
-                                    <th></th>
+                                <tr className='text-center'>
+
                                     <th>Brand Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
+                                    <th>Id</th>
+                                    <th>Email</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><button onClick={() => handleDelete(item._id)} className='p-1 px-2 bg-rose-600 text-white'>Delete</button></td>
+                                <tr className='text-center'>
+
                                     <td>{item.name}</td>
                                     <td>{item.price}</td>
                                     <td>{item.quantity}</td>
+                                    <td>{item._id}</td>
+                                    <td>{user.email}</td>
+                                    <td><button onClick={() => handleDelete(item._id)} className='p-1 px-2 bg-rose-600 text-white'>Delete</button></td>
                                 </tr>
-
-
                             </tbody>
                         </Table>
-
-
                     </p>)
                 }
             </div>
